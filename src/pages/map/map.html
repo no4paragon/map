@@ -4,10 +4,9 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Map</ion-title>
+    <ion-searchbar [(ngModel)]="searchMap" (ionInput)="filterMap()"></ion-searchbar>
   </ion-navbar>
 </ion-header>
-
-
 <ion-content>
   <div #map id="map"></div>  
 </ion-content>

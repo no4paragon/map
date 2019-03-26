@@ -12,6 +12,7 @@ export class MapServiceProvider {
   }
 
   latLng:any;
+
   initMap() {
     
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -20,7 +21,7 @@ export class MapServiceProvider {
         resp.coords.longitude
         
       );
-        console.log(resp, this.latLng, "hit")
+        console.log(resp, this.latLng.lat(), this.latLng.lng(), "hit")
      }).catch((error) => {
        console.log(error);
      });
@@ -33,12 +34,14 @@ export class MapServiceProvider {
   
      const subscription = this.geolocation.watchPosition()
       .pipe(filter((p) => p.coords !== undefined))
-                                .subscribe(position => {
+      .subscribe(position => {
     console.log(position.coords.longitude + ' ' + position.coords.latitude);
     });
   
     // To stop notifications
     subscription.unsubscribe();
+
+   
    };
 
 

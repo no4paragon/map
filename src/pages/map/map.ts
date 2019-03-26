@@ -31,13 +31,11 @@ export class MapPage {
 
   loadMap(){
 
-    // this.geolocation.getCurrentPosition().then((resp) => {
-    //   console.log('')
-    // }).catch((error) => {
-    //   console.log('Error getting location', error);
-    // });
-
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+    setTimeout( _ =>{
+      console.log("coords", this.mapService.latLng )
+    }, 3000 )
+    
+    let latLng = new google.maps.LatLng(this.mapService.latLng.lat(), this.mapService.latLng.lng());
 
     let mapOptions = {
       center: latLng,
@@ -46,6 +44,15 @@ export class MapPage {
     }
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+    new google.maps.Marker({
+      map: this.map,
+      position: latLng,
+      animation: google.maps.Animation.BOUNCE
+    });
+    
+    
+  
 
   }
 
